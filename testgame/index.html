@@ -24,9 +24,9 @@
         function preload() {
 
             game.load.image('sky', 'phaser-examples/examples/assets/skies/sky1.png');
-            game.load.image('ground', 'phaser-examples/examples/assets/demoscene/block.png');
+            game.load.image('ground', 'phaser-examples/examples/assets/sprites/platform.png');
             game.load.image('star', 'phaser-examples/examples/assets/misc/star_particle.png');
-            game.load.image('dude', 'phaser-examples/examples/assets/sprites/player.png', 32, 48);
+            game.load.image('dude', 'phaser-examples/examples/assets/games/starstruck/dude.png', 32, 48);
 
         }
 
@@ -45,7 +45,7 @@
             platforms.enableBody = true;
             console.log(game.world.height);
             // Create the ground
-            var ground = platforms.create(0, game.world.height - 8, 'ground');
+            var ground = platforms.create(0, game.world.height - 64, 'ground');
 
             // Scale it to fit the width of the game (the original sprite is 400 X 32 in size)
             ground.scale.setTo(2, 2);
@@ -58,7 +58,7 @@
             var ledge = platforms.create(400, 400, 'ground');
 
             ledge.body.immovable = true;
-            
+
             ledge = platforms.create(-150, 250, 'ground');
 
             ledge.body.immovable = true;
