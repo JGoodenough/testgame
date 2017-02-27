@@ -9,7 +9,8 @@
   "author": "Jesse Goodenough",
   "license": "ISC",
   "dependencies": {
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "phaser": "^2.6.2"
   },
   "repository": {
     "type": "git",
