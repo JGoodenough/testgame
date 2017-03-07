@@ -148,13 +148,13 @@
             }
 
             // Jump!
-            if (jumpCount > 0 && upInputIsActive(5, cursors)) {
+            if (jumpCount > 0 && upInputIsActive(5)) {
                 player.body.velocity.y = JUMP_SPEED;
                 jumping = true;
             }
 
             // Reduce the number of available jumps if the jump input is released
-            if (jumping && upInputReleased(cursors)) {
+            if (jumping && upInputReleased()) {
                 jumpCount--;
                 jumping = false;
             }
