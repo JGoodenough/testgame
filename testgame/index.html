@@ -23,6 +23,9 @@
         var JUMP_SPEED;
         var jumpCount;
         var jumping;
+        // Score Data
+        var score = 0;
+        var scoreText;
 
         function preload() {
 
@@ -103,6 +106,9 @@
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
             }
 
+            // Display Score over everything so has to be invoked last
+            scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '16px', fill: '#000' });
+
         }
 
         function update(){
@@ -155,7 +161,7 @@
             // Jump!
             if (jumpCount > 0 && upInputIsActive(5)) {
                 // second jump should be shorter
-                player.body.velocity.y = (jumpCount === 1) ? JUMP_SPEED + 100 : JUMP_SPEED;
+                player.body.velocity.y = (jumpCount === 1) ? JUMP_SPEED + 50 : JUMP_SPEED;
                 jumping = true;
             }
 
@@ -189,6 +195,10 @@
         function collectStar(player, star) {
             // Removes the star from the screen
             star.kill();
+
+            //  Add and update the score
+            score += 10;
+            scoreText.text = 'Score: ' + score;
         }
 
     };
