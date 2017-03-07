@@ -123,22 +123,7 @@
                 player.frame = 4;
             }
 
-            // Allow the player to jump if they are touching the ground.
-            // if(cursors.up.isDown && player.body.touching.down && hitPlatform) {
-            //     player.body.velocity.y = -320;
-            //     jumpCount++;
-            // } 
-
-            // // Allow player to double jump
-            // if(jumpCount > 2) {
-            //     if(cursors.up.isDown && !player.body.touching.down && !hitPlatform) {
-            //         player.body.velocity.y = -200;
-            //         jumpCount = 0;
-            //         console.log(player.body.touching.down);
-            //         console.log(hitPlatform);
-            //     }
-            // }
-
+            // Check to see if player is on the ground
             var onTheGround = player.body.touching.down && hitPlatform;
 
             // If the player is touching the ground, let him have 2 jumps
