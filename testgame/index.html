@@ -16,6 +16,7 @@
 
         var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
         var platforms;
+        var stars;
         var player;
         var cursors;
         // Jump Data
@@ -86,13 +87,32 @@
             player.animations.add('left', [0, 1, 2, 3], 10, true);
             player.animations.add('right', [5, 6, 7, 8], 10, true);
 
+            stars = game.add.group();
 
+            stars.enableBody = true;
+
+            // Create 12 of them evenly spaced
+            for(var i=0;i < 12; i++) {
+                // Create a star inside the 'stars' group
+                var star = stars.create(i * 70, 0, 'star');
+
+                // Let gravity do its thing
+                star.body.gravity.y = 250;
+
+                // Give each star a slightly random bounce value
+                star.body.bounce.y = 0.7 + Math.random() * 0.2;
+            }
 
         }
 
         function update(){
             // collide the player and the stars with the platforms
             var hitPlatform = game.physics.arcade.collide(player, platforms);
+
+            game.physics.arcade.collide(stars, platforms);
+
+            // does player overlap with star
+            game.physics.arcade.overlap(player, stars, collectStar, null, this);
 
             // Reset the players velocity (movement)
             player.body.velocity.x = 0;
@@ -134,7 +154,8 @@
 
             // Jump!
             if (jumpCount > 0 && upInputIsActive(5)) {
-                player.body.velocity.y = JUMP_SPEED;
+                // second jump should be shorter
+                player.body.velocity.y = (jumpCount === 1) ? JUMP_SPEED + 100 : JUMP_SPEED;
                 jumping = true;
             }
 
@@ -147,7 +168,7 @@
         }
 
         // This function should return true when the player activates the "jump" control
-        // In this case, either holding the up arrow
+        // In this case holding the up arrow
         function upInputIsActive(duration) {
             var isActive = false;
 
@@ -164,6 +185,11 @@
 
             return released;
         };
+
+        function collectStar(player, star) {
+            // Removes the star from the screen
+            star.kill();
+        }
 
     };
 
