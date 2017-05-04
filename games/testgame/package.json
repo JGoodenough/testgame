@@ -1,0 +1,14 @@
+{
+  "name": "testgame",
+  "version": "1.0.0",
+  "description": "Test game for testing phaser features and game development in general.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jesse Goodenough",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^2.6.2"
+  }
+}

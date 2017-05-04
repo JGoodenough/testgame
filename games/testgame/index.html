@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title>hello phaser!</title>
         <!-- <script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script> -->
-        <script src="../../node_modules/phaser/build/phaser.min.js"></script>
+        <script src="node_modules/phaser/build/phaser.min.js"></script>
 
         <link type="text/css" src="styles/mainstyles.css">
     </head>
@@ -28,11 +28,14 @@
         var scoreText;
 
         function preload() {
+            // set up cors 
+            game.load.baseURL = '';
+            game.load.crossOrigin = '';
 
-            game.load.image('sky', '../../phaser-examples/examples/assets/skies/sky1.png');
-            game.load.image('ground', '../../phaser-examples/examples/assets/sprites/platform.png');
-            game.load.image('star', '../../phaser-examples/examples/assets/misc/star_particle.png');
-            game.load.spritesheet('dude', '../../phaser-examples/examples/assets/games/starstruck/dude.png', 32, 48);
+            game.load.image('sky', 'assets/skies/sky1.png');
+            game.load.image('ground', 'assets/sprites/platform.png');
+            game.load.image('star', 'assets/misc/star_particle.png');
+            game.load.spritesheet('dude', 'assets/games/starstruck/dude.png', 32, 48);
 
         }
 
