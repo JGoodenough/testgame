@@ -12,7 +12,8 @@
     "phaser": "^2.6.2"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-webserver": "^0.9.1"
   },
   "repository": {
     "type": "git",
